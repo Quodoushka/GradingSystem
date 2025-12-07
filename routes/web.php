@@ -3,6 +3,13 @@
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 use Laravel\Fortify\Features;
+use App\Http\Controllers\ControllerDashboard;
+
+#Route::get('/dash', [ControllerDashboard::class]);
+
+Route::get('/dash', [ControllerDashboard::class, 'index'])->name('dashboard.index');
+
+Route::get('/dash/{user}/edit', [ControllerDashboard::class, 'edit'])->name('dashboard.edit');
 
 Route::get('/', function () {
     return Inertia::render('welcome', [
